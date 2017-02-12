@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  api:
+    container_name: hackathon_api
+    build: .
+    ports:
+      - 80:8080
+    volumes:
+      - .:/usr/src/app
+
+  database:
+    image: mariadb:10.1
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=hackdb
+      - MYSQL_USER=hackuser
+      - MYSQL_PASSWORD=hackpass
+
+#  database:
+#    image: postgres:9.6
+#    container_name: hackathon_database
+#    ports:
+#      - 5432:5432
+#    environment:
+#      - POSTGRES_PASSWORD=password
